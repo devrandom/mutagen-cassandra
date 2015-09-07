@@ -35,6 +35,20 @@
 		</developer>
 	</developers>
 
+        <repositories>
+            <repository>
+                <id>jcenter</id>
+                <name>JCenter</name>
+                <url>https://jcenter.bintray.com</url>
+                <releases>
+                    <enabled>false</enabled>
+                </releases>
+                <snapshots>
+                    <enabled>true</enabled>
+                </snapshots>
+            </repository>
+        </repositories>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
