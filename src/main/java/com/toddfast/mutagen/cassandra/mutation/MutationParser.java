@@ -1,8 +1,8 @@
 package com.toddfast.mutagen.cassandra.mutation;
 
-import java.io.File;
-
 import com.toddfast.mutagen.MutagenException;
+
+import java.io.File;
 
 public class MutationParser {
 	

@@ -1,19 +1,18 @@
 package com.toddfast.mutagen.cassandra.mutation;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-
-import com.datastax.driver.core.Session;
 import com.toddfast.mutagen.MutagenException;
 import com.toddfast.mutagen.Mutation;
 import com.toddfast.mutagen.cassandra.CassandraSubject;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 public class ClassMutation {
 	
 	/**
 	 * Loads classes the do mutations using only the resource name
 	 * 
-	 * @param session
+	 * @param subject
 	 * @param resource
 	 * @return
 	 * 
