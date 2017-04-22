@@ -2,11 +2,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.toddfast.mutagen</groupId>
-	<artifactId>mutagen-cassandra</artifactId>
+	<artifactId>devrandom-mutagen-cassandra</artifactId>
 	<version>0.4.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>toddfast-mutagen-cassandra</name>
+	<name>devrandom-mutagen-cassandra</name>
 
 	<description>Mutagen Cassandra is a framework (based on Mutagen) that
 		provides CQL schema versioning and mutation for Apache Cassandra.
