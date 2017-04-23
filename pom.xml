@@ -1,12 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.toddfast.mutagen</groupId>
+	<groupId>org.gitian.mutagen</groupId>
 	<artifactId>devrandom-mutagen-cassandra</artifactId>
 	<version>0.4.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>devrandom-mutagen-cassandra</name>
+	<name>Devrandom's Mutagen for Cassandra</name>
 
 	<description>Mutagen Cassandra is a framework (based on Mutagen) that
 		provides CQL schema versioning and mutation for Apache Cassandra.
@@ -33,6 +33,10 @@
 			<name>Todd Fast</name>
 			<email>todd@toddfast.com</email>
 		</developer>
+		<developer>
+			<id>devrandom</id>
+			<name>Dev Random</name>
+		</developer>
 	</developers>
 
 	<properties>
@@ -58,12 +62,12 @@
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
-			<version>3.4</version>
+			<version>3.2.1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.datastax.cassandra</groupId>
 			<artifactId>cassandra-driver-core</artifactId>
-			<version>3.1.4</version>
+			<version>3.2.0</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -82,87 +86,87 @@
                 	<target>1.7</target>
             	</configuration>
         	</plugin>
-			<plugin>
-			    <!-- Separates the unit tests from the integration tests. -->
-			    <groupId>org.apache.maven.plugins</groupId>
-			    <artifactId>maven-surefire-plugin</artifactId>
-			    <configuration>
-			       <!-- Skip the default running of this plug-in (or everything is run twice...see below) -->
-			       <skip>true</skip>
-			       <!-- Show 100% of the lines from the stack trace (doesn't work) -->
-			       <trimStackTrace>false</trimStackTrace>
-			    </configuration>
-			    <executions>
-			       <execution>
-			          <id>unit-tests</id>
-			          <phase>test</phase>
-			          <goals>
-			             <goal>test</goal>
-			          </goals>
-			          <configuration>
-			                <!-- Never skip running the tests when the test phase is invoked -->
-			                <skip>false</skip>
-			             <includes>
-			                   <!-- Include unit tests within integration-test phase. -->
-			                <include>**/*Tests.java</include>
-			             </includes>
-			             <excludes>
-			               <!-- Exclude integration tests within (unit) test phase. -->
-			                <exclude>**/*IT.java</exclude>
-			            </excludes>
-			          </configuration>
-			       </execution>
-			       <execution>
-			          <id>integration-tests</id>
-			          <phase>integration-test</phase>
-			          <goals>
-			             <goal>test</goal>
-			          </goals>
-			          <configuration>
-			            <!-- Never skip running the tests when the integration-test phase is invoked -->
-			             <skip>false</skip>
-			             <includes>
-			               <!-- Include integration tests within integration-test phase. -->
-			               <include>**/*IT.java</include>
-			             </includes>
-			          </configuration>
-			       </execution>
-			    </executions>
-			  </plugin>
-			<plugin>
-        		<artifactId>maven-failsafe-plugin</artifactId>
-        		<version>2.19.1</version>
-        		<executions>
-          			<execution>
-            			<goals>
-              				<goal>integration-test</goal>
-              				<goal>verify</goal>
-            			</goals>
-          			</execution>
-        		</executions>
-      		</plugin>
-      		<plugin>
-        		<groupId>org.codehaus.mojo</groupId>
-        		<artifactId>cassandra-maven-plugin</artifactId>
-        		<version>3.5</version>
-        		<configuration>
-        			<nativeTransportPort>9042</nativeTransportPort>
-        			<startNativeTransport>true</startNativeTransport>
-          			<rpcPort>9160</rpcPort>
-          			<jmxPort>7199</jmxPort>
-          			<storagePort>7000</storagePort>
-          			<!-- Port contention for 8081, use different port -->
-          			<stopPort>18081</stopPort>
-        		</configuration>
-        		<executions>
-        			<execution>
-        				<goals>
-        					<goal>start</goal>
-        					<goal>stop</goal>
-        				</goals>
-        			</execution>
-        		</executions>
-      		</plugin>
+			<!--<plugin>-->
+			    <!--&lt;!&ndash; Separates the unit tests from the integration tests. &ndash;&gt;-->
+			    <!--<groupId>org.apache.maven.plugins</groupId>-->
+			    <!--<artifactId>maven-surefire-plugin</artifactId>-->
+			    <!--<configuration>-->
+			       <!--&lt;!&ndash; Skip the default running of this plug-in (or everything is run twice...see below) &ndash;&gt;-->
+			       <!--<skip>true</skip>-->
+			       <!--&lt;!&ndash; Show 100% of the lines from the stack trace (doesn't work) &ndash;&gt;-->
+			       <!--<trimStackTrace>false</trimStackTrace>-->
+			    <!--</configuration>-->
+			    <!--<executions>-->
+			       <!--<execution>-->
+			          <!--<id>unit-tests</id>-->
+			          <!--<phase>test</phase>-->
+			          <!--<goals>-->
+			             <!--<goal>test</goal>-->
+			          <!--</goals>-->
+			          <!--<configuration>-->
+			                <!--&lt;!&ndash; Never skip running the tests when the test phase is invoked &ndash;&gt;-->
+			                <!--<skip>false</skip>-->
+			             <!--<includes>-->
+			                   <!--&lt;!&ndash; Include unit tests within integration-test phase. &ndash;&gt;-->
+			                <!--<include>**/*Tests.java</include>-->
+			             <!--</includes>-->
+			             <!--<excludes>-->
+			               <!--&lt;!&ndash; Exclude integration tests within (unit) test phase. &ndash;&gt;-->
+			                <!--<exclude>**/*IT.java</exclude>-->
+			            <!--</excludes>-->
+			          <!--</configuration>-->
+			       <!--</execution>-->
+			       <!--<execution>-->
+			          <!--<id>integration-tests</id>-->
+			          <!--<phase>integration-test</phase>-->
+			          <!--<goals>-->
+			             <!--<goal>test</goal>-->
+			          <!--</goals>-->
+			          <!--<configuration>-->
+			            <!--&lt;!&ndash; Never skip running the tests when the integration-test phase is invoked &ndash;&gt;-->
+			             <!--<skip>false</skip>-->
+			             <!--<includes>-->
+			               <!--&lt;!&ndash; Include integration tests within integration-test phase. &ndash;&gt;-->
+			               <!--<include>**/*IT.java</include>-->
+			             <!--</includes>-->
+			          <!--</configuration>-->
+			       <!--</execution>-->
+			    <!--</executions>-->
+			  <!--</plugin>-->
+			<!--<plugin>-->
+        		<!--<artifactId>maven-failsafe-plugin</artifactId>-->
+        		<!--<version>2.19.1</version>-->
+        		<!--<executions>-->
+          			<!--<execution>-->
+            			<!--<goals>-->
+              				<!--<goal>integration-test</goal>-->
+              				<!--<goal>verify</goal>-->
+            			<!--</goals>-->
+          			<!--</execution>-->
+        		<!--</executions>-->
+      		<!--</plugin>-->
+      		<!--<plugin>-->
+        		<!--<groupId>org.codehaus.mojo</groupId>-->
+        		<!--<artifactId>cassandra-maven-plugin</artifactId>-->
+        		<!--<version>3.5</version>-->
+        		<!--<configuration>-->
+        			<!--<nativeTransportPort>9042</nativeTransportPort>-->
+        			<!--<startNativeTransport>true</startNativeTransport>-->
+          			<!--<rpcPort>9160</rpcPort>-->
+          			<!--<jmxPort>7199</jmxPort>-->
+          			<!--<storagePort>7000</storagePort>-->
+          			<!--&lt;!&ndash; Port contention for 8081, use different port &ndash;&gt;-->
+          			<!--<stopPort>18081</stopPort>-->
+        		<!--</configuration>-->
+        		<!--<executions>-->
+        			<!--<execution>-->
+        				<!--<goals>-->
+        					<!--<goal>start</goal>-->
+        					<!--<goal>stop</goal>-->
+        				<!--</goals>-->
+        			<!--</execution>-->
+        		<!--</executions>-->
+      		<!--</plugin>-->
 		</plugins>
 	</build>
 </project>
