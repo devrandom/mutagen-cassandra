@@ -3,7 +3,7 @@
 
 	<groupId>org.gitian.mutagen</groupId>
 	<artifactId>devrandom-mutagen-cassandra</artifactId>
-	<version>0.4.3-SNAPSHOT</version>
+	<version>0.4.3</version>
 	<packaging>jar</packaging>
 
 	<name>Devrandom's Mutagen for Cassandra</name>
@@ -18,6 +18,14 @@
 		<connection>scm:git:git@github.com:devrandom/mutagen-cassandra.git</connection>
 		<developerConnection>scm:git:git@github.com:devrandom/mutagen-cassandra.git</developerConnection>
 	</scm>
+
+	<distributionManagement>
+		<repository>
+			<id>bintray-devrandom</id>
+			<name>devrandom-maven</name>
+			<url>https://api.bintray.com/maven/devrandom/maven/mutagen-cassandra/</url>
+		</repository>
+	</distributionManagement>
 
 	<licenses>
 		<license>
